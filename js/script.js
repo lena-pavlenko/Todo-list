@@ -35,8 +35,13 @@ const render = function() {
 
         // Перенос в список Завершенные
         li.querySelector('.todo-complete').addEventListener('click', function() {
-            item.completed = true;
-            render(); //перерисовываем каждый раз список
+            if (item.completed === true) {
+                item.completed = false;
+                render();
+            } else {
+                item.completed = true;
+                render(); //перерисовываем каждый раз список
+            }
         })
 
         // Удаление задачи

@@ -58,6 +58,7 @@ const render = function() {
     localStorage.setItem('todo', JSON.stringify(todoData))
 }
 render();
+
 // Обрабатываем событие отправки формы
 formTodo.addEventListener('submit', function(e){
     e.preventDefault();

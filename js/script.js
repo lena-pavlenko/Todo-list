@@ -1,3 +1,5 @@
+'use sctrict';
+
 // Объявление переменных
 const formTodo = document.querySelector('.todo-control');
 const inputTodo = document.querySelector('.header-input');
@@ -5,7 +7,8 @@ const todoList = document.querySelector('.todo-list');
 const todoCompleted = document.querySelector('.todo-completed');
 
 // Создание массива для задач
-let todoData = [];
+
+const todoData = JSON.parse(localStorage.getItem('todo')) ?? [];
 
 // Функция вывода на экран задач
 const render = function() {
@@ -54,7 +57,7 @@ const render = function() {
     // Сохраняем данные в локальном хранилище
     localStorage.setItem('todo', JSON.stringify(todoData))
 }
-
+render();
 // Обрабатываем событие отправки формы
 formTodo.addEventListener('submit', function(e){
     e.preventDefault();
@@ -74,9 +77,3 @@ formTodo.addEventListener('submit', function(e){
     // Отрисовываем верстку
     render();
 })
-
-// Проверяем локальное хранилище и отрисовываем верстку
-if (localStorage.getItem('todo')) {
-    todoData = JSON.parse(localStorage.getItem('todo'))
-    render()
-}
